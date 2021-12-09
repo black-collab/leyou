@@ -1,0 +1,28 @@
+server:
+  port: 9299
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/leyou
+  redis:
+    host: localhost
+    port: 6379
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+logging:
+  level.com.leyou.user: debug
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.leyou.user.pojo

@@ -1,0 +1,35 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: gateway
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+leyou:
+  jwt:
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub # 公钥地址
+    cookieName: ly-token # cookie的名称
+    expire: 30
+    cookieMaxAge: 30
+    path:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item
+
+zuul:
+  prefix: /api
+  routes:
+    item: /item/**
+    search: /search/**
+    user-service: /user/**
+    auth-service: /auth/**
+  add-host-header: true #zuul转发请求的时候会转发header原始请求地址
+  sensitive-headers: #zuul有个默认的pre类型拦截器(路由之前拦截)，里面这个参数设置默认忽略cookie和set-cookie，给他设置为空就可以了

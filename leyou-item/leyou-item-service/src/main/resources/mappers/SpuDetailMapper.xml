@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.item.mappers.SpuDetailMapper">
+    <insert id="saveSpuDetail" parameterType="com.leyou.item.pojo.SpuDetail">
+        INSERT INTO tb_spu_detail (
+               `spu_id`,
+               `description`,
+               `generic_spec`,
+               `special_spec`,
+               `packing_list`,
+               `after_service`)
+
+        VALUES (#{spuId},
+                #{description},
+                #{genericSpec},
+                #{specialSpec},
+                #{packingList},
+                #{afterService})
+    </insert>
+
+    <update id="updateSpuDetail">
+        UPDATE tb_spu_detail
+        SET description   = #{description},
+            generic_spec  = #{genericSpec},
+            special_spec  = #{specialSpec},
+            packing_list  = #{packingList},
+            after_service = #{afterService}
+        where
+            spu_id = #{spuId}
+    </update>
+</mapper>

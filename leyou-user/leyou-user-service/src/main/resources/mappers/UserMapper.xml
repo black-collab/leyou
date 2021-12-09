@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.user.mapper.UserMapper">
+    <select id="checkUserNameOrPhone" resultType="int">
+        select count(id) from tb_user where 1=1
+        <if test="type == 1">
+            and username = #{data}
+        </if>
+        <if test="type == 2">
+            and phone = #{data}
+        </if>
+    </select>
+
+    <insert id="insertUser" parameterType="user">
+        insert into tb_user(
+                username,
+                password,
+                phone,
+                created,
+                salt
+        )
+        VALUES(
+                #{username},
+                #{password},
+                #{phone},
+                #{created},
+                #{salt}
+        )
+    </insert>
+
+    <select id="queryUser" resultType="com.leyou.user.pojo.User">
+        select * from tb_user where username = #{username}
+    </select>
+</mapper>

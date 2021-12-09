@@ -1,0 +1,31 @@
+POST http://localhost:10001/goods
+
+<> 2021-09-29T155548.400.json
+
+###
+
+GET http://localhost:10001/error
+Accept: text/html
+
+<> 2021-09-29T155409.500.html
+
+###
+
+GET http://localhost:11000/upload/a
+
+<> 2021-09-20T201810.404.json
+
+###
+
+GET http://localhost:11000/upload/a
+
+<> 2021-09-20T201724.404.json
+
+###
+
+GET http://localhost:10001/brand/page
+
+<> 2021-09-15T050537.400.json
+
+###
+

@@ -1,0 +1,27 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: search
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
+  jackson:
+    default-property-inclusion: non_null #对象json序列化时，值为null的字段不会进行json转换，直接丢弃
+  rabbitmq:
+    host: localhost
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      exchange: leyou.item.exchange
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期

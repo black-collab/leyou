@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.item.mappers.SpecParamMapper">
+    <select id="querySpecParamById" resultType="SpecParam">
+        select * from tb_spec_param
+        <where>
+            <if test="cid != null">
+                cid = #{cid}
+            </if>
+            <if test="gid != null">
+                and group_id = #{gid}
+            </if>
+            <if test="generic != null">
+                and generic = #{generic}
+            </if>
+            <if test="searching != null">
+                and searching = #{searching}
+            </if>
+        </where>
+    </select>
+</mapper>
